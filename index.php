@@ -2,12 +2,15 @@
 error_reporting(-1);
 ini_set('display-errors', 'On');
 
-$username = "shop";
-$password = "123456";
-$dsn = "mysql:host:127.0.0.1;dbname=shop;charset=utf8";
+$username = "shop_Admin";
+$password = "KsKm811;";
+$dsn = "mysql:host=127.0.0.1;dbname=shop;charset=utf8mb4";
+try {
 $db = new PDO($dsn,$username,$password);
-
-$sql = "SELECT * FROM products";
+}catch(PDOException $e) {
+    echo"Connection failed". $e->getMessage();
+}
+$sql = "SELECT ID,title,descripton,price FROM products";
 $result = $db->query($sql);
 // var_dump($result);
 ?>
